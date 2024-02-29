@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get("/", [CrudController::class, "index"])->name("crud.index");
+
+
+//Ruta para anadir un nuevo alumno
+Route::post("/registrar-alumno", [CrudController::class, "create"])->name("crud.create");

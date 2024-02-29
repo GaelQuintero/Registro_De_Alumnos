@@ -10,9 +10,61 @@
 </head>
 <body>
     <h1 class="text-center p-4">Alumnos</h1>
+    @if (session("correcto"))
+    <div class="alert alert-success"> {{session("correcto")}}</div>
+    @endif 
+
+    @if (session("incorrecto"))
+    <div class="alert alert-danger"> {{session("incorrecto")}}</div>
+    @endif 
+
+   
+ 
 </br>
     
 <div class="p-5 table-responsive-sm">
+  <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalRegistrar">Añadir Alumno</button>
+  <!-- Modal -->
+<div class="modal fade" id="modalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Registar Alumno</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form action="{{ route("crud.create") }}" method="POST">
+        @csrf
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Matricula</label>
+    <input type="text" class="form-control" id="Matricula" aria-describedby="emailHelp"  name="Matricula">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="Nombre" name="Nombre">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Edad</label>
+    <input type="text" class="form-control" id="Edad" name="Edad">
+  </div><div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Localidad</label>
+    <input type="text" class="form-control" id="Localidad" name="Localidad">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Cuatrimestre</label>
+    <input type="text" class="form-control" id="Cuatrimestre" name="Cuatrimestre">
+  </div>
+ 
+  <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+</form>
+      </div>
+      
+    </div>
+  </div>
+</div>
 <table class="table table-dark-emphasis table-striped table-bordered border-white-50">
   <thead>
     <tr>
@@ -35,8 +87,53 @@
       <td>{{$item -> Edad}}</td>
       <td>{{$item -> Localidad}}</td>
       <td>{{$item -> Cuatrimestre}}</td>
-      <td class="text-center"><a href="" class="btn btn-primary btn-sm rounded-5"><i class="fa-solid fa-user-pen"></i></a></td>
+      <td class="text-center"><a href=""  data-bs-toggle="modal" data-bs-target="#modalEditar"class="btn btn-primary btn-sm rounded-5"><i class="fa-solid fa-user-pen"></i></a></td>
       <td class="text-center"><a href="" class="btn btn-danger btn-sm rounded-5"><i class="fa-solid fa-trash"></i></a></td>
+
+
+
+    
+   
+<!-- Modal -->
+<div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar Datos del Alumno</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Matricula</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="matricula">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" name="nombre">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Edad</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" name="edad">
+  </div><div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Localidad</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" name="localidad">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Cuatrimestre</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" name="cuatrimestre">
+  </div>
+ 
+  <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Modificar</button>
+      </div>
+</form>
+      </div>
+      
+    </div>
+  </div>
+</div>
     </tr>
     @endforeach
   </tbody>
