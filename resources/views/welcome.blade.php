@@ -87,7 +87,7 @@
       <td>{{$item -> Edad}}</td>
       <td>{{$item -> Localidad}}</td>
       <td>{{$item -> Cuatrimestre}}</td>
-      <td class="text-center"><a href=""  data-bs-toggle="modal" data-bs-target="#modalEditar"class="btn btn-primary btn-sm rounded-5"><i class="fa-solid fa-user-pen"></i></a></td>
+      <td class="text-center"><a href=""  data-bs-toggle="modal" data-bs-target="#modalEditar{{$item -> Matricula}}"class="btn btn-primary btn-sm rounded-5"><i class="fa-solid fa-user-pen"></i></a></td>
       <td class="text-center"><a href="" class="btn btn-danger btn-sm rounded-5"><i class="fa-solid fa-trash"></i></a></td>
 
 
@@ -95,7 +95,7 @@
     
    
 <!-- Modal -->
-<div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditar{{$item -> Matricula}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -103,25 +103,27 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form>
+      <form action="{{route("crud.update")}}" method="post" >
+        @csrf
+        
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Matricula</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="matricula">
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="Matricula" value="{{$item->Matricula}}" readonly>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Nombre</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" name="nombre">
+    <input type="text" class="form-control" id="exampleInputPassword1" name="Nombre" value="{{$item->Nombre}}">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Edad</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" name="edad">
+    <input type="text" class="form-control" id="exampleInputPassword1" name="Edad" value="{{$item->Edad}}">
   </div><div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Localidad</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" name="localidad">
+    <input type="text" class="form-control" id="exampleInputPassword1" name="Localidad" value="{{$item->Localidad}}">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Cuatrimestre</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" name="cuatrimestre">
+    <input type="number" class="form-control" id="exampleInputPassword1" name="Cuatrimestre" value="{{$item->Cuatrimestre}}">
   </div>
  
   <div class="modal-footer">

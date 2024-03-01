@@ -20,3 +20,6 @@ Route::get("/", [CrudController::class, "index"])->name("crud.index");
 
 //Ruta para anadir un nuevo alumno
 Route::post("/registrar-alumno", [CrudController::class, "create"])->name("crud.create");
+
+//Ruta para Modificar un alumno
+Route::post("/modificar-alumno", [CrudController::class, "update"])->name("crud.update");
