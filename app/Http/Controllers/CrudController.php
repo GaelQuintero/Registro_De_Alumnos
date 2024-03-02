@@ -13,7 +13,7 @@ class CrudController extends Controller
 
     public function create(Request $request){
     try {
-        $sql=DB::insert(" insert into alumnos(idAlumno,Matricula,Nombre,Edad,Localidad,Cuatrimestre)values(?,?,?,?,?,?) ", [
+        $sql=DB::insert(" INSERT INTO alumnos(idAlumno,Matricula,Nombre,Edad,Localidad,Cuatrimestre)values(?,?,?,?,?,?) ", [
             $request->idAlumno,
             $request->Matricula,
             $request->Nombre,
@@ -57,7 +57,7 @@ class CrudController extends Controller
     
     public function delete($id){   
         try {
-            $sql=DB::delete(" delete from alumnos where idAlumno= $id ");
+            $sql=DB::delete(" DELETE FROM alumnos where idAlumno= $id ");
            
         } catch (\Throwable $th) {
             $sql=0;
