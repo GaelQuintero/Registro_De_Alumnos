@@ -8,10 +8,10 @@
      <!-- SweetAlert2 -->
      <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-    <title>Registro de alumnos</title>
+    <title>Alumnos 🎓</title>
 </head>
 <body class="bg-dark">
-    <h1 class="text-center p-4 text-light">Alumnos</h1>
+    <h1 class="text-center p-4 text-light">Registro de alumnos</h1>
     <!-- Alerta de registro exitoso -->
     @if (session("correcto"))
     <script>
