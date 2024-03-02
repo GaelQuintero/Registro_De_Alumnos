@@ -46,12 +46,12 @@ class CrudController extends Controller
             ]);
     
             if ($affectedRows > 0) {
-                return back()->with("correcto", "Alumno modificado correctamente");
+                return back()->with("correcto2", "Alumno modificado correctamente");
             } else {
-                return back()->with("incorrecto", "No se encontró ningún alumno para modificar");
+                return back()->with("incorrecto2", "No se encontró ningún alumno para modificar");
             }
         } catch (\Throwable $th) {
-            return back()->with("incorrecto", "Error al modificar el alumno");
+            return back()->with("incorrecto3", "Error al modificar el alumno");
         }
     }
     
@@ -63,9 +63,9 @@ class CrudController extends Controller
             $sql=0;
         }
         if ($sql ==true) {
-            return back()->with("correcto", "Alumno Eliminado correctamente");
+            return back()->with("correcto4", "Alumno eliminado correctamente");
         } else {
-            return back()->with("Incorrecto", "Error al Eliminar");
+            return back()->with("incorrecto4", "Error al Eliminar");
         }
 }
 }
