@@ -18,7 +18,12 @@
     <div class="alert alert-danger"> {{session("incorrecto")}}</div>
     @endif 
 
-   
+   <script>
+    var res=function(){
+      var not=confirm("¿Estas seguro de eliminar?");
+      return not;
+    }
+   </script>
  
 </br>
     
@@ -88,7 +93,7 @@
       <td>{{$item -> Localidad}}</td>
       <td>{{$item -> Cuatrimestre}}</td>
       <td class="text-center"><a href=""  data-bs-toggle="modal" data-bs-target="#modalEditar{{$item -> Matricula}}"class="btn btn-primary btn-sm rounded-5"><i class="fa-solid fa-user-pen"></i></a></td>
-      <td class="text-center"><a href="" class="btn btn-danger btn-sm rounded-5"><i class="fa-solid fa-trash"></i></a></td>
+      <td class="text-center"><a href="{{route("crud.delete", $item -> idAlumno)}}" onclick="return res()" class="btn btn-danger btn-sm rounded-5"><i class="fa-solid fa-trash"></i></a></td>
 
 
 

@@ -23,3 +23,6 @@ Route::post("/registrar-alumno", [CrudController::class, "create"])->name("crud.
 
 //Ruta para Modificar un alumno
 Route::post("/modificar-alumno", [CrudController::class, "update"])->name("crud.update");
+
+//Ruta para eliminar un alumno
+Route::get("/eliminar-alumno-{id}", [CrudController::class, "delete"])->name("crud.delete");
