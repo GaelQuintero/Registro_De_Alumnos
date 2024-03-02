@@ -92,7 +92,7 @@
       <td>{{$item -> Edad}}</td>
       <td>{{$item -> Localidad}}</td>
       <td>{{$item -> Cuatrimestre}}</td>
-      <td class="text-center"><a href=""  data-bs-toggle="modal" data-bs-target="#modalEditar{{$item -> Matricula}}"class="btn btn-primary btn-sm rounded-5"><i class="fa-solid fa-user-pen"></i></a></td>
+      <td class="text-center"><a href=""  data-bs-toggle="modal" data-bs-target="#modalEditar{{$item -> idAlumno}}"class="btn btn-primary btn-sm rounded-5"><i class="fa-solid fa-user-pen"></i></a></td>
       <td class="text-center"><a href="{{route("crud.delete", $item -> idAlumno)}}" onclick="return res()" class="btn btn-danger btn-sm rounded-5"><i class="fa-solid fa-trash"></i></a></td>
 
 
@@ -100,7 +100,7 @@
     
    
 <!-- Modal -->
-<div class="modal fade" id="modalEditar{{$item -> Matricula}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditar{{$item -> idAlumno}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -111,6 +111,10 @@
       <form action="{{route("crud.update")}}" method="post" >
         @csrf
         
+        <div class="mb-3" hidden>
+          <label for="exampleInputEmail1" class="form-label">ID</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="idAlumno" value="{{$item->idAlumno}}" readonly>
+        </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Matricula</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="Matricula" value="{{$item->Matricula}}" readonly>

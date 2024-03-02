@@ -36,26 +36,25 @@ class CrudController extends Controller
     }
     public function update(Request $request){
         try {
-            $sql=DB::update(" update alumnos set  Nombre=?, Edad=?, Localidad=?, Cuatrimestre=? where Matricula=? ",[ 
+            $affectedRows = DB::update("UPDATE alumnos SET Matricula=?, Nombre=?, Edad=?, Localidad=?, Cuatrimestre=? WHERE idAlumno=?", [ 
+                $request->Matricula,
                 $request->Nombre,
                 $request->Edad,
                 $request->Localidad,
                 $request->Cuatrimestre,
-                $request->Matricula,
+                $request->idAlumno,
             ]);
-         if ($sql==0) {
-            $sql = 1;
-         }
+    
+            if ($affectedRows > 0) {
+                return back()->with("correcto", "Alumno modificado correctamente");
+            } else {
+                return back()->with("incorrecto", "No se encontró ningún alumno para modificar");
+            }
         } catch (\Throwable $th) {
-            $sql=0;
+            return back()->with("incorrecto", "Error al modificar el alumno");
         }
-        if ($sql ==true) {
-            return back()->with("correcto", "Alumno Modificado correctamente");
-        } else {
-            return back()->with("Incorrecto", "Error al Modificar");
-        }
-
     }
+    
     public function delete($id){   
         try {
             $sql=DB::delete(" delete from alumnos where idAlumno= $id ");
